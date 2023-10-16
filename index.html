@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1>The Store</h1>
-        <ul>
+        <ul id="sections">
             <li>
                 <p>Celulares</p>
                 <span class="hover-bar"></span>
@@ -26,14 +26,16 @@
         </ul>
         
         <div>
-            <img src="./src/imgs/cart.png" alt="">
-            <img src="./src/imgs/user.png" alt="">
+            <span id="cart-items-quantity">0</span>
+            <img src="./src/imgs/cart.png" alt="" id="cart-icon">
         </div>
     </header>
-    <section>
-        <div>
-            <h2>Bem vindo(a) à The Store</h2>
-            <p>A unica loja que você pode tudo!</p>
+    <section id="main-section">
+        <div class="inside-section">
+            <div id="content-box" class="start">
+                <h2>Bem vindo(a) a The Store</h2>
+                <p>A unica loja que você pode tudo!</p>
+            </div>
         </div>
     </section>
     <script src="./src/js/main.js" type="module"></script>
