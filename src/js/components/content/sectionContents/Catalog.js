@@ -1,4 +1,5 @@
 import { cart } from "../../../controllers/CartController.js";
+import { hprice } from "../../../helpers/price.js";
 import { contentItems } from "../../items.js";
 import { Content } from "../Content.js";
 
@@ -28,7 +29,7 @@ export class Catalog extends Content {
             li.innerHTML = `
                 <img src="./src/imgs/catalog/${this.type}/${el[0]}.png" alt="">
                 <p class="name">${el[1].name}</p>
-                <p class="price">${el[1].price} R$</p>
+                <p class="price">${hprice.convertToMoney(el[1].price)}</p>
             `
 
             let btn = document.createElement("button");

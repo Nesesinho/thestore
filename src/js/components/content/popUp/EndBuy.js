@@ -31,7 +31,7 @@ class EndBuy extends Content {
                 <div class="right">
                     <div class="info">
                         <p>Quantidade de items no carrinho: ${cart.itemsQuantity}</p>
-                        <p>Valor total da compra: ${cart.totalValue} R$</p>
+                        <p>Valor total da compra: ${cart.totalValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                     </div>
                     <div class="checkbox">
                         <input type="checkbox" id="checkbox">
@@ -60,7 +60,7 @@ class EndBuy extends Content {
         return {
             name: document.querySelector("#name").value,
             age: idade,
-            purchased: [quantidadeDeTiposDeProduto, cart.items],
+            purchased: [quantidadeDeTiposDeProduto, cart.itemsQuantity, cart.totalValue, cart.items],
         };
     }
 

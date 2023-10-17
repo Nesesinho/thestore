@@ -1,5 +1,6 @@
 import { cart } from "../../../controllers/CartController.js";
 import { section } from "../../../controllers/SectionController.js";
+import { hprice } from "../../../helpers/price.js";
 import { Content } from "../Content.js";
 import { endBuy } from "./EndBuy.js";
 
@@ -31,7 +32,7 @@ class CartPop extends Content {
                         <img src="./src/imgs/catalog/${type[0]}/${item[0]}.png" alt="">
                         <div>
                             <span>Quantidade: ${item[1].quantity}</span>
-                            <span>Valor: ${item[1].price}</span>
+                            <span>Valor: ${hprice.convertToMoney(item[1].price)}</span>
                         </div>
                         <span class="down-bar"></span>
                     </li>

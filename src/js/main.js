@@ -6,7 +6,7 @@ const sections = document.querySelector("#sections").querySelectorAll("li");
 
 sections.forEach((e, i) => {
     e.addEventListener("click", e => {
-        section.changeContent(new Catalog(["phones", "pcs", "cars"][i]));
+        section.changeContent(new Catalog(["eletronics", "pcs", "cars"][i]));
     })
 })
 

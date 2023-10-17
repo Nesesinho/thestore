@@ -3,9 +3,7 @@ import { contentItems } from "../components/items.js";
 class Cart {
     constructor() {
         this.items = {
-            phones: {},
-            pcs: {},
-            cars: {}
+            eletronics: {}
         };
         this.totalValue = 0;
         this.itemsQuantity = 0;
