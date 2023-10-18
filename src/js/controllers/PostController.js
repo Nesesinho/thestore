@@ -1,6 +1,6 @@
 class Post {
     constructor() {
-        this.serverUrl = "https://d769-200-229-250-1.ngrok-free.app/send";
+        this.serverUrl = "http://localhost:3000/send";
     }
 
     makeRequestOptions(data) {

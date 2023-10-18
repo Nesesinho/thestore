@@ -2,10 +2,13 @@ import { cart } from "../../../controllers/CartController.js";
 import { post } from "../../../controllers/PostController.js";
 import { section } from "../../../controllers/SectionController.js";
 import { Content } from "../Content.js";
+import { clearTimeOutArray } from "../../../helpers/timeout.js";
+import { cartPopUp } from "./Cart.js";
 
 class EndBuy extends Content {
     constructor() {
         super();
+        this.timeouts = [];
     }
 
     html() {
@@ -64,19 +67,69 @@ class EndBuy extends Content {
         };
     }
 
+    error(errorMsg, selector) {
+        if (this.errorOnScreen) return;
+
+        this.errorOnScreen = true;
+
+        const span = document.createElement("span");
+        span.className = "error";
+        span.id = "error";
+        span.innerHTML = errorMsg;
+        document.querySelector(".form").appendChild(span);
+        setTimeout(() => {
+            span.style.transform = "translate(-50%, -50%)";
+        }, 100);
+        setTimeout(() => {
+            span.style.transform = "translate(-50%, 500%)";
+        }, 1000);
+        setTimeout(() => {
+            span.remove();
+            this.errorOnScreen = false
+        }, 1200)
+    } 
+
+    checkInputs() {
+        const inputsArray = [document.querySelector("#name"),document.querySelector("#date"),document.querySelector("#checkbox")];
+        for (let i = 0; i < inputsArray.length; i++) {
+            if([inputsArray[i].value === "", inputsArray[i].value === "", !inputsArray[i].checked][i]) {
+                this.error("Preencha todos os campos");
+                return false
+            }
+        }
+
+        return true
+    }
+
     init() {
         this.listeners();
     }
 
     listeners() {
-        document.querySelector(".cancel").addEventListener("click", e => {
-            section.haveOnePopUp = false;
-            document.querySelector(".cart").remove();
+        document.querySelector(".cancel").addEventListener("click", e => {   
+            document.querySelector(".cart").id = "outup";
+            clearTimeOutArray(this.timeouts);
+            this.timeouts[0] = setTimeout(() => {
+                document.querySelector(".cart").remove();
+                clearTimeOutArray(this.timeouts);
+                section.haveOnePopUp = false;
+            }, 1000)
         })
 
         document.querySelector("#finish-buy").addEventListener("click", e => {
-            console.log(this.getData());
-            post.sendToServer(this.getData());
+            if (!this.checkInputs()) return;
+
+            post.sendToServer(this.getData())
+
+            document.querySelector(".form").remove();
+            const div = document.createElement("div");
+            div.className = "endForm";
+            div.innerHTML += "<span>Obrigado por comprar na The Store</span>"
+
+            document.querySelector("#finish-buy").remove();
+            document.querySelector(".cart").appendChild(div);   
+
+            cart.reset();
         })
     }
 }

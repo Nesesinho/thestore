@@ -9,6 +9,16 @@ class Cart {
         this.itemsQuantity = 0;
     }
 
+    reset() {
+        this.items = {
+            eletronics: {}
+        };
+        this.totalValue = 0;
+        this.itemsQuantity = 0;
+
+        this.reload();
+    }
+
     add(id, type) {
         this.itemsQuantity++
         this.reload();

@@ -10,7 +10,9 @@ export class Catalog extends Content {
         this.size = "90%";
         this.name = "catalog";
     }
-    
+
+    static productsOnSale = 4;
+
     html() {
         return `
                 <ul id="catalog-items">
@@ -19,12 +21,15 @@ export class Catalog extends Content {
     };
     
     init(){
-        this.addItems();
+        this.addItems(contentItems);
     };
     
-    addItems() {
+    addItems(itensObj) {
         const catalogUl = document.querySelector("#catalog-items");
-        Object.entries(contentItems[this.type]).forEach(el => {
+        Object.entries(itensObj[this.type]).forEach((el, i) => {
+            console.log(Catalog.productsOnSale)
+            if (i >= Catalog.productsOnSale) return;   
+
             let li = document.createElement("li");
             li.innerHTML = `
                 <img src="./src/imgs/catalog/${this.type}/${el[0]}.png" alt="">
@@ -32,11 +37,39 @@ export class Catalog extends Content {
                 <p class="price">${hprice.convertToMoney(el[1].price)}</p>
             `
 
+            let notEl;
+            if(itensObj !== contentItems) {
+                notEl = document.createElement("span");
+                notEl.className = "notification";
+                notEl.innerHTML = "!";
+                li.appendChild(notEl);
+
+                li.style.opacity = 0;
+                setTimeout(() => {
+                    li.style.opacity = 100;
+                }, 200)
+            }
+
             let btn = document.createElement("button");
             btn.innerHTML = "Adicionar ao carrinho";
             btn.addEventListener("click", e => {
-                console.log(el[0]);
                 cart.add(el[0], this.type);
+
+                if (cart.itemsQuantity >= (Catalog.productsOnSale * 10) + (Catalog.productsOnSale * 10)) {
+                    let itensToAdd = {};
+                    itensToAdd[this.type] = {};
+
+                    Object.entries(contentItems[this.type]).forEach((e,i) => {
+                        if (i < Catalog.productsOnSale || i > Catalog.productsOnSale + 1) return;
+                        itensToAdd[this.type][e[0]] = e[1];
+                    })
+                    Catalog.productsOnSale += 2;
+                    this.addItems(itensToAdd)
+                }
+
+                if(itensObj !== contentItems) {
+                    notEl.remove();
+                }
             })
 
             li.appendChild(btn);

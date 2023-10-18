@@ -17,6 +17,7 @@ header {
     justify-content: space-between;
 
     width: 100%;
+    min-height: 50px;
     height: 8%;
 
     padding: 0 20px;
@@ -127,6 +128,11 @@ section .inside-section{
     transform: translateX(-100%);
 }
 
+#outup{
+    position: absolute;
+    transform: translate(-50%, -200%);
+}
+
 /*////////////////////////////////Start/////////////////////////////////*/
 
 section .inside-section .start {
@@ -168,7 +174,7 @@ section .inside-section .catalog::-webkit-scrollbar-thumb {
 
 section .inside-section .catalog ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around;  
     flex-wrap: wrap;
 
     height: 90%;
@@ -176,20 +182,54 @@ section .inside-section .catalog ul {
 }
 
 section .inside-section .catalog ul li {
+    position: relative;
+
     display: flex;
     flex-direction: column;
 
-    width: 15%;
+    width: 200px;
     height: min-content;
 
     padding: 10px;
 
-    margin: 10px 0;
+    margin: 10px 10px;
 
     background-color: #748cab;
     border-radius: 10px;
     color: #f0ebd8;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    transition: opacity 1s;
+}
+
+section .inside-section .catalog ul li .notification {
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    
+    font-size: 30px;
+
+    height: 40px;
+    width: 40px;
+
+    padding: 10px;
+
+    border-radius: 20px;
+
+    animation: sobedesce;
+    animation-duration: 3s; 
+    animation-iteration-count: infinite;
+    background-color: red;
+}
+
+@keyframes sobedesce {
+    0%  {top: -5px;}
+    50% {top: 5px;}
+    100%{top: -5px;}
 }
 
 section .inside-section .catalog ul li img {
@@ -267,6 +307,8 @@ section .inside-section .catalog ul li button:active {
 
     background-color: #1d2d44;
     color: #f0ebd8;
+
+    transition: transform 1s;
 }
 
 .cart div {
@@ -292,6 +334,8 @@ section .inside-section .catalog ul li button:active {
 }
 
 .cart ul {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;    
@@ -300,6 +344,7 @@ section .inside-section .catalog ul li button:active {
     height: 60%;
 
     overflow-x: scroll;
+    overflow-y: hidden;
 
     list-style: none;
 
@@ -316,6 +361,22 @@ section .inside-section .catalog ul li button:active {
 .cart ul::-webkit-scrollbar-thumb {
     background: black; 
     border-radius: 4px;
+}
+
+.cart .error {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -500%);
+    transition: transform .2s;
+
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+
+    background-color: #1d2d44;
 }
 
 .cart ul li {
@@ -485,4 +546,24 @@ section .inside-section .catalog ul li button:active {
 .cart .form .right .checkbox input {
     width: 30px;
     margin-right: 15px;
+}
+
+.cart .endForm {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 60%;
+
+    margin: auto 0px;
+
+    background-color: #748cab;
+    border-radius: 10px;
+}
+
+.cart .endForm span {
+    font-size: 40px;
 }

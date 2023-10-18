@@ -55,6 +55,38 @@ export const contentItems = {
         jamesWebb: {
             name: "James Webb",
             price: 50000000000
+        },
+        r2d2: {
+            name: "R2D2",
+            price: 1000000000000
+        },
+        amazon: {
+            name: "Amazon",
+            price: 6850000000000
+        },
+        ironArmor: {
+            name: "Mark LXXXV",
+            price: 9870000000000
+        },
+        microsoft: {
+            name: "Microsoft",
+            price: 12500000000000
+        },
+        apple: {
+            name: "Apple",
+            price: 15400000000000
+        },
+        kayo: {
+            name: "KAY/O",
+            price: 44750000000000
+        },
+        omnitrix: {
+            name: "Omnitrix",
+            price: 766745000000000
+        },
+        commandBlock: {
+            name: "Command Block",
+            price: 1356700000000000
         }
     }
 }
