@@ -55,7 +55,7 @@ export class Catalog extends Content {
             btn.addEventListener("click", e => {
                 cart.add(el[0], this.type);
 
-                if (cart.itemsQuantity >= (Catalog.productsOnSale * 10) + (Catalog.productsOnSale * 10)) {
+                if (cart.itemsQuantity >= (Catalog.productsOnSale - 3) * 5 * 2) {
                     let itensToAdd = {};
                     itensToAdd[this.type] = {};
 
