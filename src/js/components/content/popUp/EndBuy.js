@@ -52,7 +52,7 @@ class EndBuy extends Content {
         var dataNascimento = new Date(document.querySelector("#date").value);
         var dataAtual = new Date();
         var diferenca = dataAtual - dataNascimento;
-        var idade = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365.25));
+        var idade = diferenca / (1000 * 60 * 60 * 24 * 365.25);
         
         let quantidadeDeTiposDeProduto = 0;
 
