@@ -40,8 +40,8 @@ class CartPop extends Content {
                     <li>
                         <img src="./src/imgs/catalog/${type[0]}/${item[0]}.png" alt="">
                         <div>
-                        <span>Quantidade: ${item[1].quantity}</span>
-                        <span>Valor: ${hprice.convertToMoney(item[1].price)}</span>
+                            <span>Quantidade: ${item[1].quantity}</span>
+                            <span>Valor: ${hprice.convertToMoney(item[1].price)}</span>
                         </div>
                         <span class="down-bar"></span>
                     </li>
