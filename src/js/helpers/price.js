@@ -9,7 +9,7 @@ class Price {
             currency: 'BRL',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
-          }) + " R$";
+          });
         if(number >=  1000000000 && number <  1000000000000) return (number/1000000000).toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL',

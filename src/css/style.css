@@ -322,15 +322,13 @@ section .inside-section .catalog ul li button:active {
     font-size: 40px;
 }
 
-.cart div img{
+.cart div svg{
     width: 40px;
     height: 40px;
+    cursor: pointer;
+    stroke: white;
 
     padding: 5px;
-}
-
-.cart div img:hover {
-    cursor: pointer;
 }
 
 .cart ul {
